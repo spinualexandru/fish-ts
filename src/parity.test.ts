@@ -62,7 +62,7 @@ const plain: string = \`plain template\`;
 `,
     fish: [
       "set -g name world",
-      'set -g greeting (string join "" (string join "" \'Hello, \' $name) \'!\')',
+      "set -g greeting (string join \"\" (string join \"\" 'Hello, ' $name) '!')",
       'set -g template "Hello, $name!"',
       "set -g plain 'plain template'",
     ],
@@ -74,10 +74,7 @@ ${declarations}
 const base: number = 8;
 const total: number = (base + 2) * 3 / 5 % 4;
 `,
-    fish: [
-      "set -g base 8",
-      "set -g total (math (math (math (math $base + 2) '*' 3) / 5) '%' 4)",
-    ],
+    fish: ["set -g base 8", "set -g total (math (math (math (math $base + 2) '*' 3) / 5) '%' 4)"],
   },
   {
     name: "conditions",
@@ -147,13 +144,7 @@ for (const item of items) {
   continue;
 }
 `,
-    fish: [
-      "set -g items a b",
-      "for item in $items",
-      "    echo $item",
-      "    continue",
-      "end",
-    ],
+    fish: ["set -g items a b", "for item in $items", "    echo $item", "    continue", "end"],
   },
   {
     name: "classic for loops",
@@ -183,13 +174,7 @@ while (n > 0) {
   n--;
 }
 `,
-    fish: [
-      "set -g n 2",
-      "while test $n -gt 0",
-      "    echo $n",
-      "    set n (math $n - 1)",
-      "end",
-    ],
+    fish: ["set -g n 2", "while test $n -gt 0", "    echo $n", "    set n (math $n - 1)", "end"],
   },
   {
     name: "switch statements",
@@ -263,7 +248,7 @@ greet(value, 2);
       "function greet",
       "    set -l who $argv[1]",
       "    set -l times $argv[2]",
-      '    set -l message (string join "" \'hi \' $who)',
+      "    set -l message (string join \"\" 'hi ' $who)",
       "    if test $times -gt 1",
       "        echo $message",
       "        return 0",

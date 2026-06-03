@@ -44,9 +44,7 @@ export function transpile(source: string): string {
   const checkedSource = createCheckedSource(source);
 
   try {
-    return new FishEmitter(checkedSource.checker).emitSourceFile(
-      checkedSource.sourceFile,
-    );
+    return new FishEmitter(checkedSource.checker).emitSourceFile(checkedSource.sourceFile);
   } finally {
     checkedSource.cleanup();
   }

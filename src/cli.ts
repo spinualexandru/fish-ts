@@ -32,7 +32,5 @@ if (args.length === 0 && process.stdin.isTTY) {
   process.exit(1);
 }
 
-const source = args[0]
-  ? fs.readFileSync(args[0], "utf8")
-  : fs.readFileSync(0, "utf8");
+const source = args[0] ? fs.readFileSync(args[0], "utf8") : fs.readFileSync(0, "utf8");
 console.log(transpile(source));

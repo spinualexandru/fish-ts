@@ -159,9 +159,7 @@ export class FishEmitter {
     }
 
     if (ts.isArrayLiteralExpression(expr)) {
-      return expr.elements
-        .map((element) => this.emitExpr(element as ts.Expression))
-        .join(" ");
+      return expr.elements.map((element) => this.emitExpr(element as ts.Expression)).join(" ");
     }
 
     if (ts.isElementAccessExpression(expr)) {
@@ -313,10 +311,7 @@ export class FishEmitter {
       return this.emitBinaryCondition(expr);
     }
 
-    if (
-      ts.isPrefixUnaryExpression(expr) &&
-      expr.operator === ts.SyntaxKind.ExclamationToken
-    ) {
+    if (ts.isPrefixUnaryExpression(expr) && expr.operator === ts.SyntaxKind.ExclamationToken) {
       return `not ${this.emitCondition(expr.operand)}`;
     }
 
@@ -347,10 +342,7 @@ export class FishEmitter {
   private emitBinaryCondition(expr: ts.BinaryExpression): string {
     const op = expr.operatorToken.kind;
 
-    if (
-      op === ts.SyntaxKind.EqualsEqualsEqualsToken ||
-      op === ts.SyntaxKind.EqualsEqualsToken
-    ) {
+    if (op === ts.SyntaxKind.EqualsEqualsEqualsToken || op === ts.SyntaxKind.EqualsEqualsToken) {
       const leftType = this.checker.getTypeAtLocation(expr.left);
       const fishOp = isStringLike(leftType) || isBooleanLike(leftType) ? "=" : "-eq";
       return `test ${this.emitExpr(expr.left)} ${fishOp} ${this.emitExpr(expr.right)}`;
@@ -404,10 +396,7 @@ export class FishEmitter {
       return;
     }
 
-    if (
-      ts.isPostfixUnaryExpression(expr) ||
-      ts.isPrefixUnaryExpression(expr)
-    ) {
+    if (ts.isPostfixUnaryExpression(expr) || ts.isPrefixUnaryExpression(expr)) {
       this.emitUnaryMutationStatement(expr);
       return;
     }
@@ -489,10 +478,7 @@ export class FishEmitter {
     const varType = this.checker.getTypeOfSymbolAtLocation(symbol, declaration);
     const flag = this.declarationFlag();
 
-    if (
-      this.checker.isArrayType(varType) &&
-      ts.isArrayLiteralExpression(initializer)
-    ) {
+    if (this.checker.isArrayType(varType) && ts.isArrayLiteralExpression(initializer)) {
       const elements = initializer.elements
         .map((element) => this.emitExpr(element as ts.Expression))
         .join(" ");
@@ -582,9 +568,7 @@ export class FishEmitter {
     this.emit("end");
   }
 
-  private emitForInitializer(
-    initializer: ts.ForInitializer | undefined,
-  ): void {
+  private emitForInitializer(initializer: ts.ForInitializer | undefined): void {
     if (!initializer) {
       return;
     }
@@ -658,10 +642,7 @@ export class FishEmitter {
     this.emit("if test $status -ne 0");
     this.indentLevel++;
 
-    if (
-      catchClause.variableDeclaration &&
-      ts.isIdentifier(catchClause.variableDeclaration.name)
-    ) {
+    if (catchClause.variableDeclaration && ts.isIdentifier(catchClause.variableDeclaration.name)) {
       this.emit(`set -l ${catchClause.variableDeclaration.name.text} $status`);
     }
 

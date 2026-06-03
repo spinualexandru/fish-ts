@@ -70,8 +70,7 @@ const FISH_BUILTIN_COMMANDS = [
 const FISH_BUILTIN_DECLARATIONS = [
   "type FishBuiltinArgument = unknown;",
   ...FISH_BUILTIN_COMMANDS.map(
-    (command) =>
-      `declare function ${command}(...args: FishBuiltinArgument[]): any;`,
+    (command) => `declare function ${command}(...args: FishBuiltinArgument[]): any;`,
   ),
   "",
 ].join("\n");

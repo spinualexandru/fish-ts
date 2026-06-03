@@ -13,9 +13,7 @@ import {
 
 test("escapes fish strings", () => {
   expect(escapeFishSingleQuoted("can't stop")).toBe("'can'\\''t stop'");
-  expect(escapeFishDoubleQuotedText('a\\b "$HOME"')).toBe(
-    'a\\\\b \\"\\$HOME\\"',
-  );
+  expect(escapeFishDoubleQuotedText('a\\b "$HOME"')).toBe('a\\\\b \\"\\$HOME\\"');
 
   expect(emitStringLiteral("plain_./:@%+=,-")).toBe("plain_./:@%+=,-");
   expect(emitStringLiteral("")).toBe("''");

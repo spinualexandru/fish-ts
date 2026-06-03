@@ -34,12 +34,7 @@ source("config.fish");
 `);
 
   expect(fish).toBe(
-    [
-      "set -g name world",
-      "echo hello $name",
-      "set -g dir (pwd)",
-      "source config.fish",
-    ].join("\n"),
+    ["set -g name world", "echo hello $name", "set -g dir (pwd)", "source config.fish"].join("\n"),
   );
 });
 
@@ -51,13 +46,7 @@ if (pwd() === "/tmp") {
 }
 `);
 
-  expect(fish).toBe(
-    [
-      "if test (pwd) = /tmp",
-      "    echo tmp",
-      "end",
-    ].join("\n"),
-  );
+  expect(fish).toBe(["if test (pwd) = /tmp", "    echo tmp", "end"].join("\n"));
 });
 
 test("transpiles expression calls", () => {
@@ -67,12 +56,7 @@ const name: string = "world";
 const x: string = greet(name);
 `);
 
-  expect(fish).toBe(
-    [
-      "set -g name world",
-      "set -g x (greet $name)",
-    ].join("\n"),
-  );
+  expect(fish).toBe(["set -g name world", "set -g x (greet $name)"].join("\n"));
 });
 
 test("transpiles local declarations", () => {

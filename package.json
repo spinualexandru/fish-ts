@@ -2,34 +2,25 @@
   "name": "fish-ts",
   "version": "1.0.1",
   "description": "A small TypeScript-to-fish-shell transpiler.",
-  "type": "module",
-  "main": "./dist/index.js",
-  "types": "./dist/index.d.ts",
+  "keywords": [
+    "fish",
+    "fish-shell",
+    "shell",
+    "transpiler",
+    "typescript"
+  ],
+  "homepage": "https://github.com/spinualexandru/fish-ts#readme",
+  "bugs": {
+    "url": "https://github.com/spinualexandru/fish-ts/issues"
+  },
+  "license": "MIT",
+  "author": "Alex Spinu <spinualexandru@outlook.com>",
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/spinualexandru/fish-ts.git"
+  },
   "bin": {
     "fish-ts": "./dist/cli.js"
-  },
-  "exports": {
-    ".": {
-      "types": "./dist/index.d.ts",
-      "import": "./dist/index.js"
-    },
-    "./compiler": {
-      "types": "./dist/compiler.d.ts",
-      "import": "./dist/compiler.js"
-    },
-    "./fish": {
-      "types": "./dist/fish.d.ts",
-      "import": "./dist/fish.js"
-    },
-    "./fish-emitter": {
-      "types": "./dist/fish-emitter.d.ts",
-      "import": "./dist/fish-emitter.js"
-    },
-    "./transpile": {
-      "types": "./dist/transpile.d.ts",
-      "import": "./dist/transpile.js"
-    },
-    "./package.json": "./package.json"
   },
   "files": [
     "dist/cli.d.ts",
@@ -63,41 +54,56 @@
     "LICENSE",
     "README.md"
   ],
+  "type": "module",
+  "sideEffects": false,
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./compiler": {
+      "types": "./dist/compiler.d.ts",
+      "import": "./dist/compiler.js"
+    },
+    "./fish": {
+      "types": "./dist/fish.d.ts",
+      "import": "./dist/fish.js"
+    },
+    "./fish-emitter": {
+      "types": "./dist/fish-emitter.d.ts",
+      "import": "./dist/fish-emitter.js"
+    },
+    "./transpile": {
+      "types": "./dist/transpile.d.ts",
+      "import": "./dist/transpile.js"
+    },
+    "./package.json": "./package.json"
+  },
   "scripts": {
     "build": "tsc",
     "docs": "typedoc",
     "docs:watch": "typedoc --watch",
+    "format": "oxfmt 'src/**/*.ts' 'examples/**/*.ts' '*.json' '*.md'",
+    "format:check": "oxfmt --check 'src/**/*.ts' 'examples/**/*.ts' '*.json' '*.md'",
+    "lint": "oxlint src examples",
+    "lint:fix": "oxlint --fix src examples",
     "prepack": "pnpm run build",
     "start": "tsc && node dist/transpile.js",
     "test": "vitest run --dir src",
     "test:watch": "vitest --dir src"
   },
-  "keywords": [
-    "fish",
-    "fish-shell",
-    "shell",
-    "transpiler",
-    "typescript"
-  ],
-  "author": "Alex Spinu <spinualexandru@outlook.com>",
-  "license": "MIT",
-  "repository": {
-    "type": "git",
-    "url": "git+ssh://git@github.com/spinualexandru/fish-ts.git"
-  },
-  "bugs": {
-    "url": "https://github.com/spinualexandru/fish-ts/issues"
-  },
-  "homepage": "https://github.com/spinualexandru/fish-ts#readme",
-  "sideEffects": false,
-  "packageManager": "pnpm@10.32.1",
   "dependencies": {
     "typescript": "^6.0.3"
   },
   "devDependencies": {
     "@types/node": "^25.9.1",
     "@vitest/coverage-v8": "4.1.8",
+    "oxfmt": "^0.53.0",
+    "oxlint": "^1.68.0",
     "typedoc": "^0.28.19",
     "vitest": "^4.1.8"
-  }
+  },
+  "packageManager": "pnpm@10.32.1"
 }

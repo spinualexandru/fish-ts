@@ -89,8 +89,6 @@ const commandLine: string = \`grep '\${pattern}' \${file} "$HOME" \\\\tail\`;
 const args: string[] = ["grep", "enabled)$", "foo.txt", "'hello world'"];
 `);
 
-    expect(fish).toBe(
-      "set -g args grep 'enabled)$' foo.txt ''\\''hello world'\\'''",
-    );
+    expect(fish).toBe("set -g args grep 'enabled)$' foo.txt ''\\''hello world'\\'''");
   });
 });

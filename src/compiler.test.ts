@@ -19,22 +19,15 @@ const b: boolean = true;
     expect(declarations).toHaveLength(3);
     expect(declarations).toBeDefined();
 
-    const [stringDeclaration, numberDeclaration, booleanDeclaration] =
-      declarations!;
+    const [stringDeclaration, numberDeclaration, booleanDeclaration] = declarations!;
 
     if (!stringDeclaration || !numberDeclaration || !booleanDeclaration) {
       throw new Error("Expected string, number, and boolean declarations");
     }
 
-    expect(
-      isStringLike(checked.checker.getTypeAtLocation(stringDeclaration.name)),
-    ).toBe(true);
-    expect(
-      isNumberLike(checked.checker.getTypeAtLocation(numberDeclaration.name)),
-    ).toBe(true);
-    expect(
-      isBooleanLike(checked.checker.getTypeAtLocation(booleanDeclaration.name)),
-    ).toBe(true);
+    expect(isStringLike(checked.checker.getTypeAtLocation(stringDeclaration.name))).toBe(true);
+    expect(isNumberLike(checked.checker.getTypeAtLocation(numberDeclaration.name))).toBe(true);
+    expect(isBooleanLike(checked.checker.getTypeAtLocation(booleanDeclaration.name))).toBe(true);
   } finally {
     checked.cleanup();
   }
@@ -65,17 +58,13 @@ const output: string = command("pwd");
     }
 
     const echoSymbol = checked.checker.getSymbolAtLocation(echoCall.expression);
-    const commandSymbol = checked.checker.getSymbolAtLocation(
-      commandCall.expression,
-    );
+    const commandSymbol = checked.checker.getSymbolAtLocation(commandCall.expression);
 
     expect(echoSymbol?.getName()).toBe("echo");
     expect(commandSymbol?.getName()).toBe("command");
-    expect(
-      checked.checker.typeToString(
-        checked.checker.getTypeAtLocation(commandCall),
-      ),
-    ).toBe("any");
+    expect(checked.checker.typeToString(checked.checker.getTypeAtLocation(commandCall))).toBe(
+      "any",
+    );
   } finally {
     checked.cleanup();
   }
@@ -97,9 +86,7 @@ const cwd = pwd();
     }
 
     expect(
-      checked.checker.typeToString(
-        checked.checker.getTypeAtLocation(declaration.initializer),
-      ),
+      checked.checker.typeToString(checked.checker.getTypeAtLocation(declaration.initializer)),
     ).toBe("string");
   } finally {
     checked.cleanup();

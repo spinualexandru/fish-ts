@@ -108,10 +108,7 @@ export function escapeFishSingleQuoted(text: string): string {
  * @public
  */
 export function escapeFishDoubleQuotedText(text: string): string {
-  return text
-    .replaceAll("\\", "\\\\")
-    .replaceAll('"', '\\"')
-    .replaceAll("$", "\\$");
+  return text.replaceAll("\\", "\\\\").replaceAll('"', '\\"').replaceAll("$", "\\$");
 }
 
 /**
@@ -185,9 +182,7 @@ export function mathOperatorFor(kind: ts.SyntaxKind): string | undefined {
  *
  * @public
  */
-export function compoundMathOperatorFor(
-  kind: ts.SyntaxKind,
-): string | undefined {
+export function compoundMathOperatorFor(kind: ts.SyntaxKind): string | undefined {
   const compoundOps: Partial<Record<ts.SyntaxKind, string>> = {
     [ts.SyntaxKind.MinusEqualsToken]: "-",
     [ts.SyntaxKind.AsteriskEqualsToken]: "'*'",
