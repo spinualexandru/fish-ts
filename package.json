@@ -1,0 +1,96 @@
+{
+  "name": "fish-ts",
+  "version": "1.0.0",
+  "description": "A small TypeScript-to-fish-shell transpiler.",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./compiler": {
+      "types": "./dist/compiler.d.ts",
+      "import": "./dist/compiler.js"
+    },
+    "./fish": {
+      "types": "./dist/fish.d.ts",
+      "import": "./dist/fish.js"
+    },
+    "./fish-emitter": {
+      "types": "./dist/fish-emitter.d.ts",
+      "import": "./dist/fish-emitter.js"
+    },
+    "./transpile": {
+      "types": "./dist/transpile.d.ts",
+      "import": "./dist/transpile.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "dist/compiler.d.ts",
+    "dist/compiler.d.ts.map",
+    "dist/compiler.js",
+    "dist/compiler.js.map",
+    "dist/demo-source.d.ts",
+    "dist/demo-source.d.ts.map",
+    "dist/demo-source.js",
+    "dist/demo-source.js.map",
+    "dist/fish-emitter.d.ts",
+    "dist/fish-emitter.d.ts.map",
+    "dist/fish-emitter.js",
+    "dist/fish-emitter.js.map",
+    "dist/fish.d.ts",
+    "dist/fish.d.ts.map",
+    "dist/fish.js",
+    "dist/fish.js.map",
+    "dist/index.d.ts",
+    "dist/index.d.ts.map",
+    "dist/index.js",
+    "dist/index.js.map",
+    "dist/transpile.d.ts",
+    "dist/transpile.d.ts.map",
+    "dist/transpile.js",
+    "dist/transpile.js.map",
+    "LICENSE",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "docs": "typedoc",
+    "docs:watch": "typedoc --watch",
+    "prepack": "pnpm run build",
+    "start": "tsc && node dist/transpile.js",
+    "test": "vitest run --dir src",
+    "test:watch": "vitest --dir src"
+  },
+  "keywords": [
+    "fish",
+    "fish-shell",
+    "shell",
+    "transpiler",
+    "typescript"
+  ],
+  "author": "Alex Spinu <spinualexandru@outlook.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/spinualexandru/fish-ts.git"
+  },
+  "bugs": {
+    "url": "https://github.com/spinualexandru/fish-ts/issues"
+  },
+  "homepage": "https://github.com/spinualexandru/fish-ts#readme",
+  "sideEffects": false,
+  "packageManager": "pnpm@10.32.1",
+  "dependencies": {
+    "typescript": "^6.0.3"
+  },
+  "devDependencies": {
+    "@types/node": "^25.9.1",
+    "@vitest/coverage-v8": "4.1.8",
+    "typedoc": "^0.28.19",
+    "vitest": "^4.1.8"
+  }
+}

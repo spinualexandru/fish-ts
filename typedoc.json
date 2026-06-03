@@ -1,0 +1,20 @@
+{
+  "$schema": "https://typedoc.org/schema.json",
+  "entryPoints": [
+    "src/transpile.ts",
+    "src/compiler.ts",
+    "src/fish.ts",
+    "src/fish-emitter.ts",
+    "examples/*.ts"
+  ],
+  "out": "docs/api",
+  "plugin": [],
+  "readme": "docs/README.md",
+  "tsconfig": "tsconfig.docs.json",
+  "excludePrivate": true,
+  "excludeProtected": true,
+  "excludeInternal": true,
+  "disableSources": true,
+  "highlightLanguages": ["fish", "ts", "typescript"],
+  "categorizeByGroup": true
+}
