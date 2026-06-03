@@ -47,21 +47,39 @@ set -g value (command input)
 greet $value 2
 ```
 
-## Run
+## Quickstart
 
 ```sh
-pnpm install
-pnpm run build
-pnpm start
-pnpm test
+npm install fish-ts
+npx fish-ts input.ts > output.fish
 ```
 
-Use the API:
+For one-off use without adding it to a project:
+
+```sh
+npx fish-ts input.ts > output.fish
+```
+
+You can also pipe source through stdin:
+
+```sh
+cat input.ts | npx fish-ts > output.fish
+```
+
+Use the API from JavaScript or TypeScript:
 
 ```ts
 import { transpile } from "fish-ts";
 
 console.log(transpile(`const name: string = "world";`));
+```
+
+## Development
+
+```sh
+pnpm install
+pnpm run build
+pnpm test
 ```
 
 ## Limitations

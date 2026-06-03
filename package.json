@@ -1,10 +1,13 @@
 {
   "name": "fish-ts",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A small TypeScript-to-fish-shell transpiler.",
   "type": "module",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
+  "bin": {
+    "fish-ts": "./dist/cli.js"
+  },
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
@@ -29,6 +32,10 @@
     "./package.json": "./package.json"
   },
   "files": [
+    "dist/cli.d.ts",
+    "dist/cli.d.ts.map",
+    "dist/cli.js",
+    "dist/cli.js.map",
     "dist/compiler.d.ts",
     "dist/compiler.d.ts.map",
     "dist/compiler.js",
