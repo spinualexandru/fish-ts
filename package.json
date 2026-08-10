@@ -1,6 +1,6 @@
 {
   "name": "fish-ts",
-  "version": "1.0.1",
+  "version": "1.0.3",
   "description": "A small TypeScript-to-fish-shell transpiler.",
   "keywords": [
     "fish",
@@ -98,10 +98,10 @@
     "typescript": "^6.0.3"
   },
   "devDependencies": {
-    "@types/node": "^26.1.2",
+    "@types/node": "^26.2.0",
     "@vitest/coverage-v8": "4.1.10",
-    "oxfmt": "^0.62.0",
-    "oxlint": "^1.77.0",
+    "oxfmt": "^0.63.0",
+    "oxlint": "^1.78.0",
     "typedoc": "^0.28.20",
     "vitest": "^4.1.10"
   },
